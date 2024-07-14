@@ -10,9 +10,15 @@
 }
 
 .imageContainer {
-  width: 200px;
+  width: 40vw;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  display: flex;
+  justify-content: center;
 }
 
 .moviePreview {
   background-size: cover;
+  max-height: 100%;
 }
