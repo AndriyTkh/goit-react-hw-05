@@ -1,7 +1,7 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams, Outlet } from "react-router-dom";
 import { tmdbSearchByID } from "../../tmdbMoviesAPI";
 import css from "./MovieDetailsPage.module.css";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import BackBtn from "../../components/BackBtn/BackBtn";
 
 export default function MovieDetailsPage() {
@@ -38,10 +38,19 @@ export default function MovieDetailsPage() {
         <div className={css.description}>
           <h1>{movie.original_title}</h1>
           <p>User Score: {Math.round(movie.vote_average * 10) + "%"}</p>
-          <h2>Overview</h2>
+          <h3>Overview</h3>
           <p>{movie.overview}</p>
-          <h2>Genres</h2>
-          <p></p>
+          <h3>Genres</h3>
+          <ul className={css.genreList}>
+            {movie.genres &&
+              movie.genres.map((genre) => {
+                return (
+                  <li key={genre.id}>
+                    <p>{genre.name}</p>
+                  </li>
+                );
+              })}
+          </ul>
         </div>
       </div>
 
@@ -56,6 +65,10 @@ export default function MovieDetailsPage() {
           </Link>
         </ul>
       </div>
+
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
