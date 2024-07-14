@@ -30,7 +30,7 @@ export default function MovieDetailsPage() {
         <div className={css.imageContainer}>
           <img
             className={css.moviePreview}
-            src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.original_title}
           />
         </div>
@@ -67,7 +67,7 @@ export default function MovieDetailsPage() {
       </div>
 
       <Suspense fallback={<div>Loading subpage...</div>}>
-        <Outlet />
+        <Outlet context={id} />
       </Suspense>
     </>
   );

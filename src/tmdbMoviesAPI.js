@@ -30,3 +30,14 @@ export function tmdbSearchByID(id) {
 
   return axios.get(url, options);
 }
+
+export function tmdbCastByID(id) {
+  const url = `https://api.themoviedb.org/3/movie/${id}/credits`;
+
+  return axios.get(url, options);
+}
+export function tmdbReviewsByID(id) {
+  const url = `https://api.themoviedb.org/3/movie/${id}/reviews`;
+
+  return axios.get(url, options);
+}
