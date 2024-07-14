@@ -1,11 +1,13 @@
-import { useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { tmdbSearchByID } from "../../tmdbMoviesAPI";
 import css from "./MovieDetailsPage.module.css";
 import { useEffect, useState } from "react";
+import BackBtn from "../../components/BackBtn/BackBtn";
 
 export default function MovieDetailsPage() {
   const { id } = useParams();
   const [movie, setMovie] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     async function loadMovie() {
@@ -22,7 +24,9 @@ export default function MovieDetailsPage() {
 
   return (
     <>
-      <div className={css.container}>
+      <BackBtn backlink={location.state ?? "/"}></BackBtn>
+
+      <div className={css.movieBox}>
         <div className={css.imageContainer}>
           <img
             className={css.moviePreview}
@@ -39,6 +43,18 @@ export default function MovieDetailsPage() {
           <h2>Genres</h2>
           <p></p>
         </div>
+      </div>
+
+      <div className={css.addBox}>
+        <p>Additional information</p>
+        <ul className={css.addList}>
+          <Link className={css.link} to="cast">
+            Cast
+          </Link>
+          <Link className={css.link} to="reviews">
+            Reviews
+          </Link>
+        </ul>
       </div>
     </>
   );

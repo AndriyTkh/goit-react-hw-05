@@ -16,6 +16,9 @@
 .active {
   color: red;
 }
+.navLink {
+  color: black;
+}
 .navLink:hover,
 .navLink:focus {
   text-decoration: underline;

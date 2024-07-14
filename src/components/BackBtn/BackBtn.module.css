@@ -1,0 +1,14 @@
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  border-radius: 4px;
+  border: 1px solid gray;
+}
+
+.backBtn:hover,
+.backBtn:focus {
+  background-color: lightgrey;
+}

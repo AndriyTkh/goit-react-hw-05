@@ -1,6 +1,9 @@
-.container {
+.movieBox {
   display: flex;
   gap: 20px;
+  padding: 4px;
+
+  border-bottom: 1px solid gray;
 }
 
 .description {
@@ -21,4 +24,26 @@
 .moviePreview {
   background-size: cover;
   max-height: 100%;
+}
+
+.addBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+
+  border-bottom: 1px solid gray;
+}
+
+.addList {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 8px;
+}
+
+.link:hover,
+.link:focus {
+  text-decoration: underline;
+  font-weight: 600;
 }
