@@ -57,12 +57,16 @@ export default function MovieDetailsPage() {
       <div className={css.addBox}>
         <p>Additional information</p>
         <ul className={css.addList}>
-          <Link className={css.link} to="cast">
-            Cast
-          </Link>
-          <Link className={css.link} to="reviews">
-            Reviews
-          </Link>
+          <li>
+            <Link className={css.link} to="cast">
+              Cast
+            </Link>
+          </li>
+          <li>
+            <Link className={css.link} to="reviews">
+              Reviews
+            </Link>
+          </li>
         </ul>
       </div>
 

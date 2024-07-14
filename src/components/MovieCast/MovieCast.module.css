@@ -1,0 +1,12 @@
+.actorBox{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    border-bottom: 1px solid gray;
+}
+
+.profileImg{
+    width: 160px;
+}
