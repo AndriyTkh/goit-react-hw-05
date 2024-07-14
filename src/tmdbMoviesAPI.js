@@ -8,13 +8,13 @@ const options = {
 };
 
 export function tmdbTrendingMovies() {
-  const url = `https://api.themoviedb.org/3/trending/movie/week?include_adult=false&language=en-US&page=1`;
+  const url = `https://api.themoviedb.org/3/trending/movie/week?include_adult=false&language=en-US&page=1&api_key=920d867173db9d51f00c070137eb853b`;
 
   return axios.get(url, options);
 }
 
 export function tmdbSearchMovies(query) {
-  const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
+  const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1&api_key=920d867173db9d51f00c070137eb853b`;
 
   return axios.get(url, options);
 }

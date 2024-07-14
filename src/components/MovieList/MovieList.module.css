@@ -1,0 +1,12 @@
+.movieList {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 4px;
+}
+
+.link:hover,
+.link:focus {
+  text-decoration: underline;
+  font-weight: 600;
+}
