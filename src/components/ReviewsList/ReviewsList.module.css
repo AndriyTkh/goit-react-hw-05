@@ -1,0 +1,8 @@
+.reviewBox {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid gray;
+}

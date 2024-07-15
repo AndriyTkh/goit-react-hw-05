@@ -1,18 +1,19 @@
 import { Link, useLocation, useParams, Outlet } from "react-router-dom";
 import { tmdbSearchByID } from "../../tmdbMoviesAPI";
 import css from "./MovieDetailsPage.module.css";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import BackBtn from "../../components/BackBtn/BackBtn";
 
 export default function MovieDetailsPage() {
-  const { id } = useParams();
+  const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
   const location = useLocation();
+  const backLinkHref = useRef(location.state ?? "/products");
 
   useEffect(() => {
     async function loadMovie() {
       try {
-        const response = await tmdbSearchByID(id);
+        const response = await tmdbSearchByID(movieId);
         setMovie(response.data);
       } catch (error) {
         console.error("Failed to load API", error);
@@ -20,11 +21,11 @@ export default function MovieDetailsPage() {
     }
 
     loadMovie();
-  }, [id]);
+  }, [movieId]);
 
   return (
     <>
-      <BackBtn backlink={location.state ?? "/"}></BackBtn>
+      <BackBtn backlink={backLinkHref.current}></BackBtn>
 
       <div className={css.movieBox}>
         <div className={css.imageContainer}>
@@ -71,7 +72,7 @@ export default function MovieDetailsPage() {
       </div>
 
       <Suspense fallback={<div>Loading subpage...</div>}>
-        <Outlet context={id} />
+        <Outlet context={movieId} />
       </Suspense>
     </>
   );

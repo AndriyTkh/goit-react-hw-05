@@ -1,16 +1,16 @@
-import { useOutletContext } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { tmdbCastByID } from "../../tmdbMoviesAPI";
 import css from "./MovieCast.module.css";
 
 export default function MovieCast() {
   const [cast, setCast] = useState();
-  const id = useOutletContext();
+  const { movieId } = useParams();
 
   useEffect(() => {
     async function loadCast() {
       try {
-        const response = await tmdbCastByID(id);
+        const response = await tmdbCastByID(movieId);
         setCast(response.data.cast);
       } catch (error) {
         console.error("Failed to load API", error);
@@ -18,7 +18,7 @@ export default function MovieCast() {
     }
 
     loadCast();
-  }, []);
+  }, [movieId]);
 
   return (
     <ul>
